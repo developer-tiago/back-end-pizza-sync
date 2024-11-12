@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('code')->nullable();
             $table->decimal('price')->nullable();
-            $table->integer('discount')->nullable();
+            $table->integer('stock')->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories');

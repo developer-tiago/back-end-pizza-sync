@@ -8,6 +8,6 @@ class EnvironmentPaginateService
 {
     public function execute()
     {
-        return Environment::paginate(10);
+        return Environment::orderBy('name')->paginate(10);
     }
 }
