@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('environment_id')->nullable();
+            $table->uuid('seating_id')->nullable();
             $table->uuid('product_id');
             $table->string('observations')->nullable();
             $table->integer('quantity');
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('environment_id')->references('id')->on('environments');
+            $table->foreign('seating_id')->references('id')->on('seatings');
             $table->foreign('product_id')->references('id')->on('products');
         });
     }

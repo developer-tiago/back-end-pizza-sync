@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name')->unique();
+            $table->string('name', 120);
+            $table->string('acronym', 3);
+            $table->string('phone_prefix', 4);
+            $table->string('currency', 3);
+            $table->string('currency_symbol', 3);
             $table->timestamps();
         });
     }

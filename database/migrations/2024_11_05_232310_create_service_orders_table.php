@@ -15,7 +15,6 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('user_logged_id');
             $table->uuid('client_id')->nullable();
-            $table->uuid('seating_id')->nullable();
             $table->decimal('total_price')->nullable();
             $table->enum('status', ['pending', 'paid', 'canceled'])->default('pending');
             $table->enum('type', ['ifood', 'manual'])->default('manual');
@@ -23,7 +22,6 @@ return new class extends Migration
 
             $table->foreign('user_logged_id')->references('id')->on('users');
             $table->foreign('client_id')->references('id')->on('clients');
-            $table->foreign('seating_id')->references('id')->on('seatings');
         });
     }
 

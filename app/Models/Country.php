@@ -12,6 +12,10 @@ class Country extends Model
     protected $table = 'countries';
 
     protected $fillable = [
-        'name'
+        'name',
+        'acronym',
+        'currency',
+        'currency_symbol',
+        'phone_prefix'
     ];
 }
