@@ -6,8 +6,10 @@ use App\Models\Category;
 
 class CategoryPaginateService
 {
-    public function execute()
+    public function execute($accountId)
     {
-        return Category::orderBy('name')->paginate(10);
+        return Category::where('account_id', $accountId)
+            ->orderBy('name')
+            ->paginate(10);
     }
 }

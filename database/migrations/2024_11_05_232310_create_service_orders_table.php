@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('service_orders', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('account_id')->index();
             $table->uuid('user_logged_id');
             $table->uuid('client_id')->nullable();
             $table->decimal('total_price')->nullable();

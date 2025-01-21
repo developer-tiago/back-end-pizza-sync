@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('country_id')->nullable();
+            $table->uuid('account_id')->index();
             $table->string('name')->index();
             $table->string('email')->nullable();
             $table->string('phone_prefix', 5)->nullable();
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->string('complement')->nullable();
             $table->timestamps();
 
+            $table->foreign('account_id')->references('id')->on('accounts');
             $table->foreign('country_id')->references('id')->on('countries');
         });
     }

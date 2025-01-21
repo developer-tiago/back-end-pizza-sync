@@ -6,8 +6,10 @@ use App\Models\Client;
 
 class ClientPaginateService
 {
-    public function execute()
+    public function execute($accountId)
     {
-        return Client::orderBy('name')->paginate(10);
+        return Client::where('account_id', $accountId)
+            ->orderBy('name')
+            ->paginate(10);
     }
 }

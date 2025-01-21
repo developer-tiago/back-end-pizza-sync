@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('environments', function (Blueprint $table) {
+        Schema::create('accounts', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('account_id')->index();
             $table->string('name');
+            $table->string('email')->unique();
+            $table->string('phone_prefix', 5)->nullable();
+            $table->string('phone', 15)->nullable();
+            $table->string('password');
             $table->timestamps();
-
-            $table->foreign('account_id')->references('id')->on('accounts');
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('environments');
+        Schema::dropIfExists('accounts');
     }
 };

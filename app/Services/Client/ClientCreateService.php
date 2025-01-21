@@ -6,10 +6,11 @@ use App\Models\Client;
 
 class ClientCreateService
 {
-    public function execute($request)
+    public function execute($request, $accountId)
     {
         Client::create([
             'name'          => $request['name'],
+            'account_id'    => $accountId,
             'country_id'    => $request['country_id'],
             'email'         => $request['email'],
             'phone_prefix'  => $request['phone_prefix'],

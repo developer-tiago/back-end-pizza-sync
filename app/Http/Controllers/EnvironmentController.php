@@ -11,19 +11,19 @@ use Illuminate\Http\Request;
 
 class EnvironmentController extends Controller
 {
-    public function paginate()
+    public function paginate(Request $request)
     {
-        return response()->json((new EnvironmentPaginateService())->execute());
+        return response()->json((new EnvironmentPaginateService())->execute($request->header('account_id')));
     }
 
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        return response()->json((new EnvironmentAllService())->execute());
+        return response()->json((new EnvironmentAllService())->execute($request->header('account_id')));
     }
 
     public function store(Request $request): JsonResponse
     {
-        return response()->json((new EnvironmentCreateService())->execute($request->all()));
+        return response()->json((new EnvironmentCreateService())->execute($request->all(), $request->header('account_id')));
     }
 
     public function destroy(string $id): JsonResponse

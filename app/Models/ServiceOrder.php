@@ -12,6 +12,7 @@ class ServiceOrder extends Model
     protected $table = 'products';
 
     protected $fillable = [
+        'account_id',
         'user_logged_id',
         'client_id',
         'total_price',

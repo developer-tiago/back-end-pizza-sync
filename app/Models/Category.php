@@ -12,6 +12,7 @@ class Category extends Model
     protected $table = 'categories';
 
     protected $fillable = [
+        'account_id',
         'name',
         'description'
     ];

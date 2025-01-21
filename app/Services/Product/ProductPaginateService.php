@@ -6,12 +6,14 @@ use App\Models\Product;
 
 class ProductPaginateService
 {
-    public function execute()
+    public function execute($accountId)
     {
         return Product::with([
             'category' => function ($query) {
                 $query->select('id', 'name');
             }
-        ])->paginate(10);
+        ])
+            ->where('account_id', $accountId)
+            ->paginate(10);
     }
 }

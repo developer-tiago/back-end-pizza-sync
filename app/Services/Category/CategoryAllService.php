@@ -6,8 +6,8 @@ use App\Models\Category;
 
 class CategoryAllService
 {
-    public function execute()
+    public function execute($accountId)
     {
-        return Category::all();
+        return Category::where('account_id', $accountId)->get();
     }
 }

@@ -9,9 +9,10 @@ class Seating extends Model
 {
     use HasUuid;
 
-    protected $table = 'products';
+    protected $table = 'seatings';
 
     protected $fillable = [
+        'account_id',
         'name'
     ];
 }

@@ -12,6 +12,7 @@ class Environment extends Model
     protected $table = 'environments';
 
     protected $fillable = [
+        'account_id',
         'name'
     ];
 }

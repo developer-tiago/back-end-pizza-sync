@@ -11,19 +11,19 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function paginate(): JsonResponse
+    public function paginate(Request $request): JsonResponse
     {
-        return response()->json((new CategoryPaginateService())->execute());
+        return response()->json((new CategoryPaginateService())->execute($request->header('account_id')));
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json((new CategoryAllService())->execute());
+        return response()->json((new CategoryAllService())->execute($request->header('account_id')));
     }
 
     public function store(Request $request): JsonResponse
     {
-        return response()->json((new CategoryCreateService())->execute($request->all()));
+        return response()->json((new CategoryCreateService())->execute($request->all(), $request->header('account_id')));
     }
 
     public function destroy(string $id): JsonResponse

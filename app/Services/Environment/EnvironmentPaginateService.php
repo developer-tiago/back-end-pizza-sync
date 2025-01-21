@@ -6,8 +6,10 @@ use App\Models\Environment;
 
 class EnvironmentPaginateService
 {
-    public function execute()
+    public function execute($accountId)
     {
-        return Environment::orderBy('name')->paginate(10);
+        return Environment::where('account_id', $accountId)
+            ->orderBy('name')
+            ->paginate(10);
     }
 }

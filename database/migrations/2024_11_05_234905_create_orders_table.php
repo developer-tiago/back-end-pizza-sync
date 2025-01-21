@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('account_id')->index();
             $table->uuid('environment_id')->nullable();
             $table->uuid('seating_id')->nullable();
             $table->uuid('product_id');
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->enum('status', ['preparing', 'finished'])->default('preparing');
             $table->timestamps();
 
+            $table->foreign('account_id')->references('id')->on('accounts');
             $table->foreign('environment_id')->references('id')->on('environments');
             $table->foreign('seating_id')->references('id')->on('seatings');
             $table->foreign('product_id')->references('id')->on('products');

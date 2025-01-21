@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SeatingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,12 @@ Route::prefix('environments')->controller(EnvironmentController::class)->group(f
 });
 
 Route::prefix('products')->controller(ProductController::class)->group(function () {
+    Route::get('/', 'paginate');
+    Route::post('/', 'store');
+    Route::delete('/{id}', 'destroy');
+});
+
+Route::prefix('seatings')->controller(SeatingController::class)->group(function () {
     Route::get('/', 'paginate');
     Route::post('/', 'store');
     Route::delete('/{id}', 'destroy');

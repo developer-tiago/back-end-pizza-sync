@@ -6,8 +6,8 @@ use App\Models\Environment;
 
 class EnvironmentAllService
 {
-    public function execute()
+    public function execute($accountId)
     {
-        return Environment::all();
+        return Environment::where('account_id', $accountId)->get();
     }
 }
